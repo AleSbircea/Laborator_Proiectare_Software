@@ -13,7 +13,12 @@ public class Student {
     }
     @Override
     public String toString(){
-        return "Laborator1_Proiectare_software.Student: " + numarMatricol+ ", "  + prenume + ", "  + nume + ", " + formatieDeStudiu+";";
+        return "Student: " + numarMatricol+ ", "  + prenume + ", "  + nume + ", " + formatieDeStudiu+";";
     }
-
+public boolean sameStudent(Student student){
+        if(this.numarMatricol==student.numarMatricol && this.prenume.equals(student.prenume) && this.nume.equals(student.nume)&& this.formatieDeStudiu.equals(student.formatieDeStudiu)){
+            return true;
+        }
+        return false;
+}
 }

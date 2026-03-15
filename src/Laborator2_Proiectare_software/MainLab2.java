@@ -59,6 +59,24 @@ public class MainLab2 {
         }
         System.out.println(xPlusYLimitedByP);
 
+        List<Student> students=new ArrayList();
+        students.add(new  Student(102, "Ana","Ionescu", "TI22/1"));
+        students.add(new Student(120, "Alis", "Popa", "TI21/2"));
+        students.add(new Student(112, "Maria", "Popa", "TI21/1"));
+        for(Student student:students){
+            System.out.println(student);
+        }
+        for(Student student:students){
+            if(student.sameStudent((new Student(120, "Alis", "Popa", "TI21/2")))){
+                System.out.println("Studentul este prezent.");
+            }
+            if(student.sameStudent((new Student(112, "Maria", "Popa", "TI21/1")))){
+                System.out.println("Studentul este prezent.");
+            }
+
+
+        }
+
 
 
     }
