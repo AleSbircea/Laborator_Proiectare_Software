@@ -1,9 +1,11 @@
+package Laborator1_Proiectare_software;
+
 public class Student {
     protected int numarMatricol;
     protected String prenume;
     protected String nume;
     protected String formatieDeStudiu;
-    Student(int numarMatricol,String prenume, String nume, String  formatieStudiu){
+    public Student(int numarMatricol,String prenume, String nume, String  formatieStudiu){
         this.numarMatricol=numarMatricol;
         this.prenume=prenume;
         this.nume=nume;
@@ -11,7 +13,7 @@ public class Student {
     }
     @Override
     public String toString(){
-        return "Student: " + numarMatricol+ ", "  + prenume + ", "  + nume + ", " + formatieDeStudiu+";";
+        return "Laborator1_Proiectare_software.Student: " + numarMatricol+ ", "  + prenume + ", "  + nume + ", " + formatieDeStudiu+";";
     }
 
 }

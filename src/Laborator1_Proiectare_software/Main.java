@@ -1,0 +1,6 @@
+import Laborator1_Proiectare_software.Student;
+
+void main() {
+ Student student1=new Student(102, "Ana","Ionescu", "Laborator1_Proiectare_software.Student An2 Inginerie");
+ System.out.println(student1.toString());
+}
