@@ -17,6 +17,7 @@ public class MainLab2 {
         x.add(4);
         x.add(9);
         x.add(5);
+
         y.add(2);
         y.add(5);
         y.add(3);
