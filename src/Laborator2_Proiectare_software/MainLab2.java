@@ -4,6 +4,7 @@ import java.util.*;
 
 public class MainLab2 {
     public static void main(String[] args){
+        //exercitiul 2.5.1
         List<Integer> x = new ArrayList();
         List<Integer> y = new ArrayList();
         List<Integer> xPlusY = new ArrayList(); //a
@@ -59,6 +60,7 @@ public class MainLab2 {
         }
         System.out.println(xPlusYLimitedByP);
 
+        //exercitiul 2.5.2
         List<Student> students=new ArrayList();
         students.add(new  Student(102, "Ana","Ionescu", "TI22/1"));
         students.add(new Student(120, "Alis", "Popa", "TI21/2"));
@@ -68,14 +70,22 @@ public class MainLab2 {
         }
         for(Student student:students){
             if(student.sameStudent((new Student(120, "Alis", "Popa", "TI21/2")))){
-                System.out.println("Studentul este prezent.");
+                System.out.println("Studentul este gasit.");
             }
             if(student.sameStudent((new Student(112, "Maria", "Popa", "TI21/1")))){
-                System.out.println("Studentul este prezent.");
+                System.out.println("Studentul este gasit.");
             }
 
 
         }
+
+        //tema
+        Set<Student> studentsSet=new HashSet<>(students);;
+        studentsSet.addAll(students);
+        boolean finds1=studentsSet.contains(new Student(120, "Alis", "Popa", "TI21/2"));
+        boolean finds2=studentsSet.contains(new Student(112, "Maria", "Popa", "TI21/1"));
+        System.out.println("Studentul Alis este gasit?" + " " + finds1);
+        System.out.println("Studentul Maria este gasit?" + " " + finds2);
 
 
 

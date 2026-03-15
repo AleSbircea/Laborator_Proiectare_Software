@@ -1,5 +1,7 @@
 package Laborator1_Proiectare_software;
 
+import java.util.Objects;
+
 public class Student {
     protected int numarMatricol;
     protected String prenume;
@@ -21,4 +23,19 @@ public boolean sameStudent(Student student){
         }
         return false;
 }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Student student = (Student) o;
+        return Objects.equals(numarMatricol, student.numarMatricol) &&
+                Objects.equals(nume, student.nume) &&
+                Objects.equals(prenume, student.prenume) &&
+                Objects.equals(formatieDeStudiu, student.formatieDeStudiu);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(numarMatricol, nume, prenume, formatieDeStudiu);
+    }
 }
