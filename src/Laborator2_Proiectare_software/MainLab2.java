@@ -44,10 +44,19 @@ public class MainLab2 {
         zSet.addAll(x);
         zSet.retainAll(y);
         System.out.println(zSet);
+        System.out.println();
 
+        xMinusY.addAll(x);
+        xMinusY.removeAll(y);
+        System.out.println(xMinusY);
+        System.out.println();
 
-
-
+        for(int i=0;i<xPlusY.size();i++){
+            if(xPlusY.get(i)<=p){
+                xPlusYLimitedByP.add(xPlusY.get(i));
+            }
+        }
+        System.out.println(xPlusYLimitedByP);
 
 
 
