@@ -23,6 +23,7 @@ public boolean sameStudent(Student student){
         }
         return false;
 }
+//adaugare lab2
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
