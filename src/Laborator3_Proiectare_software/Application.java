@@ -62,7 +62,7 @@ public class Application {
             System.out.println("Lista Studenti Sortati:");
             Path path = Paths.get(fileName);
             String lines=Files.readString(path);
-            String[] listStudents = lines.split("\r\n");
+            String[] listStudents = lines.split("\\n");
             List<Student> listSortedStudentsByName =new ArrayList<>();
             List<String> linesToWrite=new ArrayList<>();
             for(String line: listStudents) {
