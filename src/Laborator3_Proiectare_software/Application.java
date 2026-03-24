@@ -1,15 +1,14 @@
 package Laborator3_Proiectare_software;
-import java.io.BufferedWriter;
+import Laborator1_Proiectare_software.Student;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
-
-import static java.nio.file.StandardOpenOption.*;
 
 public class Application {
 
@@ -58,5 +57,34 @@ public class Application {
             Path path = Paths.get(fileName);
             Files.write(path, linesToWrite, StandardOpenOption.CREATE, StandardOpenOption.APPEND);
         }
+//pb 3.5.2
+        public void printStudentiSortatiDupaNume(String fileName) throws IOException {
+            System.out.println("Lista Studenti Sortati:");
+            Path path = Paths.get(fileName);
+            String lines=Files.readString(path);
+            String[] listStudents = lines.split("\r\n");
+            List<Student> listSortedStudentsByName =new ArrayList<>();
+            List<String> linesToWrite=new ArrayList<>();
+            for(String line: listStudents) {
+                String[] lineSplit = line.split(",");
+                Student s=new Student(Integer.parseInt(lineSplit[0]),lineSplit[1],lineSplit[2],lineSplit[3]);
+                listSortedStudentsByName.add(s);
+            }
+            listSortedStudentsByName.sort(Comparator.comparing(Student::getNume));
+            for(Student s: listSortedStudentsByName) {
+                System.out.println(s);
+                linesToWrite.add(String.valueOf(s.getNumarMatricol())+","+s.getPrenume()+","+s.getNume()+","+s.getFormatieDeStudiu());
+            }
+            try {
+                System.out.println("Urmeaza sa scriem textul in fisier...");
+                writeTextFile(linesToWrite, "studenti_out.txt");
+                System.out.println("Textul este scris in fisier!");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }
+
 
 }
+

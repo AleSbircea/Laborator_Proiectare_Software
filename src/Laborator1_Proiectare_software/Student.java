@@ -17,12 +17,12 @@ public class Student {
     public String toString(){
         return "Student: " + numarMatricol+ ", "  + prenume + ", "  + nume + ", " + formatieDeStudiu+";";
     }
-public boolean sameStudent(Student student){
+    public boolean sameStudent(Student student){
         if(this.numarMatricol==student.numarMatricol && this.prenume.equals(student.prenume) && this.nume.equals(student.nume)&& this.formatieDeStudiu.equals(student.formatieDeStudiu)){
             return true;
         }
         return false;
-}
+    }
 //adaugare lab2
     @Override
     public boolean equals(Object o) {
@@ -38,5 +38,18 @@ public boolean sameStudent(Student student){
     @Override
     public int hashCode() {
         return Objects.hash(numarMatricol, nume, prenume, formatieDeStudiu);
+    }
+//adaugare lab3
+    public String getNume() {
+        return nume;
+    }
+    public String getPrenume() {
+        return prenume;
+    }
+    public int getNumarMatricol() {
+        return numarMatricol;
+    }
+    public String getFormatieDeStudiu() {
+        return formatieDeStudiu;
     }
 }
