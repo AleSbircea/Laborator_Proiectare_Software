@@ -59,7 +59,7 @@ public class Application {
         }
 //pb 3.5.2
         public void printStudentiSortatiDupaNume(String fileName) throws IOException {
-            System.out.println("Lista Studenti Sortati:");
+            System.out.println("Lista Studenti Sortati Dupa Nume:");
             Path path = Paths.get(fileName);
             String lines=Files.readString(path);
             String[] listStudents = lines.split("\r\n");
@@ -82,7 +82,32 @@ public class Application {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
+        }
+//3.5.3-tema
+        public void printStudentiSortatiDupaFormatie(String fileName) throws IOException {
+            System.out.println("Lista Studenti Sortati Dupa Formatie De Studiu:");
+            Path path = Paths.get(fileName);
+            String lines=Files.readString(path);
+            String[] listStudents = lines.split("\r\n");
+            List<Student> listSortedStudentsByFormatie =new ArrayList<>();
+            List<String> linesToWrite=new ArrayList<>();
+            for(String line: listStudents) {
+                String[] lineSplit = line.split(",");
+                Student s=new Student(Integer.parseInt(lineSplit[0]),lineSplit[1],lineSplit[2],lineSplit[3]);
+                listSortedStudentsByFormatie.add(s);
+            }
+            listSortedStudentsByFormatie.sort(Comparator.comparing(Student::getFormatieDeStudiu));
+            for(Student s: listSortedStudentsByFormatie) {
+                System.out.println(s);
+                linesToWrite.add(String.valueOf(s.getNumarMatricol())+","+s.getPrenume()+","+s.getNume()+","+s.getFormatieDeStudiu());
+            }
+            try {
+                System.out.println("Urmeaza sa scriem textul in fisier...");
+                writeTextFile(linesToWrite, "studenti_out_sorted.txt");
+                System.out.println("Textul este scris in fisier!");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
 
 

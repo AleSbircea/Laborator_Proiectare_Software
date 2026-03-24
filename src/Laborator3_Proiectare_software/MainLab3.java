@@ -18,9 +18,23 @@ public class MainLab3 {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        //apel 3.5.2
         System.out.println();
         try {
             app.printStudentiSortatiDupaNume("studenti_in.txt");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        //apel 3.5.3-tema
+        System.out.println();
+        try {
+            app.printStudentiSortatiDupaFormatie("studenti_out.txt");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println();
+        try {
+            app.printStudentiSortatiDupaNume("studenti_out.txt");
         } catch (IOException e) {
             e.printStackTrace();
         }
