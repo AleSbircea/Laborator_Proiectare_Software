@@ -32,12 +32,7 @@ public class MainLab3 {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println();
-        try {
-            app.printStudentiSortatiDupaNume("studenti_out.txt");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
 
     }
 

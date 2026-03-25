@@ -1,6 +1,5 @@
 package Laborator3_Proiectare_software;
 import Laborator1_Proiectare_software.Student;
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -96,7 +95,8 @@ public class Application {
                 Student s=new Student(Integer.parseInt(lineSplit[0]),lineSplit[1],lineSplit[2],lineSplit[3]);
                 listSortedStudentsByFormatie.add(s);
             }
-            listSortedStudentsByFormatie.sort(Comparator.comparing(Student::getFormatieDeStudiu));
+            listSortedStudentsByFormatie.sort(Comparator.comparing(Student::getFormatieDeStudiu)
+                    .thenComparing(Student::getNume));
             for(Student s: listSortedStudentsByFormatie) {
                 System.out.println(s);
                 linesToWrite.add(String.valueOf(s.getNumarMatricol())+","+s.getPrenume()+","+s.getNume()+","+s.getFormatieDeStudiu());
