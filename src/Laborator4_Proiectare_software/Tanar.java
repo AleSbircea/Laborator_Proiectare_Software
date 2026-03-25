@@ -11,7 +11,7 @@ public class Tanar {
     }
     @Override
     public String toString() {
-        return "Tanar:" +  name + ", " + age + ", " + address + ';';
+        return "Tanar: " +  name + ", " + age + ", " + address + ';';
     }
 
 }
