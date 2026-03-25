@@ -22,11 +22,12 @@ public class AppLab4main {
         varste.put("Daniela", 23);
         Map<String, String> adrese = Map.of("Ioan", "Sibiu", "Maria", "Bucuresti", "Victor",
                 "Cluj", "Simina", "Alba-Iulia", "Marius", "Medias", "Mihai", "Cisnadie", "Daniela", "Sibiu");
+        HashMap<String, Tanar> tineri;
 
         System.out.println("Se afiseaza continutul instantei varsta initiala:" + varste);
         varste.put("Vlad",19);
         varste.put("Iulia",19);
         System.out.println("Se afiseaza continutul instantei varsta dupa adaugare:" + varste);
-        HashMap<String, Tanar> tineri;
+
     }
 }
