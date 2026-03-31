@@ -1,5 +1,6 @@
 package Laborator1_Proiectare_software;
 
+import java.util.HashMap;
 import java.util.Objects;
 
 public class Student {
@@ -65,9 +66,29 @@ public class Student {
     }
 
     //aduagare lab4 tot ce tine de note
-    public void setNote(double note) {
+    public double setNote(double note) {
         this.note = note;
 
+        return note;
+    }
+    public double getNote() {
+    return note;
+    }
+
+    //tema_lab4
+    public static double gasesteNota(String prenume, String nume, HashMap<String, Student> tineri) {
+        HashMap<String, Student> cautareDupaNota = new HashMap<>();
+        for(Student s : tineri.values()){
+            String key = s.getPrenume() + "-" + s.getNume();
+            cautareDupaNota.put(key, s);
+        }
+        String cheieCautata = prenume + "-" + nume;
+        Student gasit = cautareDupaNota.get(cheieCautata);
+        if (gasit != null) {
+            return  gasit.setNote(gasit.getNote());
+
+       }
+        return 0.0;
     }
 }
 

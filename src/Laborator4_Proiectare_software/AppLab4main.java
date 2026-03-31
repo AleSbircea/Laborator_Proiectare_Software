@@ -9,6 +9,8 @@ import java.util.*;
 import java.util.HashMap;
 import java.util.Map;
 
+import static Laborator1_Proiectare_software.Student.gasesteNota;
+
 
 public class AppLab4main {
 
@@ -55,7 +57,12 @@ public class AppLab4main {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+        //tema_lab4
+        double notaM = gasesteNota("Bianca", "Popescu",students);
+        double notaN = gasesteNota("Ioan", "Popa", students);
+        System.out.println("Verificare note: ");
+        System.out.println(notaM);
+        System.out.println(notaN);
     }
 
 
