@@ -30,6 +30,7 @@ public class AppLab4main {
         System.out.println("Se afiseaza continutul instantei varsta dupa adaugare:" + varste);
 
         HashMap<String, Tanar> tineri=new HashMap<>();
+
         for (String nume : varste.keySet()) {
             int varsta = varste.get(nume);
             String adresa = adrese.get(nume);
