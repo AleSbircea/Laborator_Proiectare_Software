@@ -76,6 +76,7 @@ public class Student {
     }
 
     //tema_lab4
+
     public static double gasesteNota(String prenume, String nume, HashMap<String, Student> tineri) {
         HashMap<String, Student> cautareDupaNota = new HashMap<>();
         for(Student s : tineri.values()){
