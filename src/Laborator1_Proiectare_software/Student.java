@@ -7,23 +7,29 @@ public class Student {
     protected String prenume;
     protected String nume;
     protected String formatieDeStudiu;
-    public Student(int numarMatricol,String prenume, String nume, String  formatieStudiu){
-        this.numarMatricol=numarMatricol;
-        this.prenume=prenume;
-        this.nume=nume;
-        this.formatieDeStudiu=formatieStudiu;
+    protected double note;
+
+    public Student(int numarMatricol, String prenume, String nume, String formatieStudiu) {
+        this.numarMatricol = numarMatricol;
+        this.prenume = prenume;
+        this.nume = nume;
+        this.formatieDeStudiu = formatieStudiu;
+        this.note = 1;
     }
+
     @Override
-    public String toString(){
-        return "Student: " + numarMatricol+ ", "  + prenume + ", "  + nume + ", " + formatieDeStudiu+";";
+    public String toString() {
+        return "Student: " + numarMatricol + ", " + prenume + ", " + nume + ", " + formatieDeStudiu + "," + note +";";
     }
-    public boolean sameStudent(Student student){
-        if(this.numarMatricol==student.numarMatricol && this.prenume.equals(student.prenume) && this.nume.equals(student.nume)&& this.formatieDeStudiu.equals(student.formatieDeStudiu)){
+
+    public boolean sameStudent(Student student) {
+        if (this.numarMatricol == student.numarMatricol && this.prenume.equals(student.prenume) && this.nume.equals(student.nume) && this.formatieDeStudiu.equals(student.formatieDeStudiu)) {
             return true;
         }
         return false;
     }
-//adaugare lab2
+
+    //adaugare lab2
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -32,24 +38,36 @@ public class Student {
         return Objects.equals(numarMatricol, student.numarMatricol) &&
                 Objects.equals(nume, student.nume) &&
                 Objects.equals(prenume, student.prenume) &&
-                Objects.equals(formatieDeStudiu, student.formatieDeStudiu);
+                Objects.equals(formatieDeStudiu, student.formatieDeStudiu)&&
+                Objects.equals(note, student.note);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(numarMatricol, nume, prenume, formatieDeStudiu);
+        return Objects.hash(numarMatricol, nume, prenume, formatieDeStudiu,note);
     }
-//adaugare lab3
+
+    //adaugare lab3
     public String getNume() {
         return nume;
     }
+
     public String getPrenume() {
         return prenume;
     }
+
     public int getNumarMatricol() {
         return numarMatricol;
     }
+
     public String getFormatieDeStudiu() {
         return formatieDeStudiu;
     }
+
+    //aduagare lab4 tot ce tine de note
+    public void setNote(double note) {
+        this.note = note;
+
+    }
 }
+
