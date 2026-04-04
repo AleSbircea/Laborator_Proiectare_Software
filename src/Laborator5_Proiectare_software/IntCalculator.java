@@ -5,7 +5,11 @@ public class IntCalculator {
      public IntCalculator(int state) {
          this.state = state;
      }
-     public IntCalculator add(int nr){
+
+    public IntCalculator() {
+    }
+
+    public IntCalculator add(int nr){
          this.state+=nr;
          return this;
      }
