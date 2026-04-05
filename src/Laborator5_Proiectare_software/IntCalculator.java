@@ -6,9 +6,6 @@ public class IntCalculator {
          this.state = state;
      }
 
-    public IntCalculator() {
-    }
-
     public IntCalculator add(int nr){
          this.state+=nr;
          return this;
