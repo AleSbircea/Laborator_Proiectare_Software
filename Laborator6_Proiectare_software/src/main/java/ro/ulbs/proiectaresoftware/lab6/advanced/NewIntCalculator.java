@@ -25,4 +25,5 @@ public class NewIntCalculator extends ACalculator<Integer> {
         state = (Integer)state / a;
         return this;
     }
+
 }
