@@ -11,16 +11,25 @@ import java.util.List;
 
 public class AplicatieCuBursaTest {
     AplicatieCuBursa appCuBursa = new AplicatieCuBursa();
+
     @Test
     public void testSorteazaStudenti() {
-        List<StudentBursieri> lista = new ArrayList<>();
-        lista.add( new StudentBursieri(1025,"Andreea","Popescu","ISM141/2", 8.20, 705.50));
-        lista.add( new StudentBursieri(1024,"Ioana","Marin","ISM121/1", 9.50, 800.10));
-        lista.add( new StudentBursieri(1029,"Bogdan","Ionescu","TI121/1", 9.00, 750.80));
+        List<StudentBursieri> lista = appCuBursa.genereaza();
         List<StudentBursieri> lst = appCuBursa.sorteaza(lista);
-        Assertions.assertEquals("ISM121/1", lst.get(0).getFormatieDeStudiu());
-        Assertions.assertEquals("ISM141/2", lst.get(1).getFormatieDeStudiu());
-        Assertions.assertEquals("TI121/1", lst.get(2).getFormatieDeStudiu());
-    }
 
+        for (int i = 0; i < lst.size() - 1; i++) {
+            StudentBursieri s1 = lst.get(i);
+            StudentBursieri s2 = lst.get(i + 1);
+
+            int compFormatie = s1.getFormatieDeStudiu().compareTo(s2.getFormatieDeStudiu());
+            Assertions.assertTrue(compFormatie <= 0);
+            if (compFormatie == 0) {
+                Assertions.assertTrue(s1.getNote() >= s2.getNote());
+            }
+            if (Double.compare(s1.getNote(), s2.getNote()) == 0) {
+                Assertions.assertTrue(s1.getCuantumBursa() >= s2.getCuantumBursa());
+            }
+
+        }
+    }
 }
