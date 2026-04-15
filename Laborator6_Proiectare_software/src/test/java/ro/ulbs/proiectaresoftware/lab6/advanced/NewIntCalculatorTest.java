@@ -55,4 +55,19 @@ public class NewIntCalculatorTest {
     public void tearDown() {
         calculator = null;
     }
+
+    //pb 6.8.2
+    @Test
+    public void testMultyplyByZero() {
+        calculator.add(5).multiply(0);
+        Assertions.assertEquals(0, calculator.result());
+    }
+    @Test
+    public void testDivideByZero() {
+        calculator.add(5);
+        Assertions.assertThrows(ArithmeticException.class, () -> {
+            calculator.divide(0);
+        });
+
+    }
 }

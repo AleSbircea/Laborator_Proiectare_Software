@@ -57,4 +57,16 @@ public class DoubleCalculatorTest {
     public void tearDown() {
         dCalculator = null;
     }
+    //pb 6.8.2
+    @Test
+    public void testMultyplyByZero() {
+        dCalculator.add(2.5).multiply(0.0);
+        Assertions.assertEquals(0.0, dCalculator.result());
+    }
+    @Test
+    public void testDivideByZero() {
+        dCalculator.add(2.5).divide(0.0);
+        Assertions.assertTrue(Double.isInfinite(dCalculator.result()));
+
+    }
 }
