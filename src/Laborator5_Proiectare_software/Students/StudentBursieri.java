@@ -49,4 +49,9 @@ public class StudentBursieri extends Student {
         }
         Files.write(path, linesToWrite);
     }
+    //adaugare lab6
+
+    public double getCuantumBursa() {
+        return cuantumBursa;
+    }
 }
