@@ -29,7 +29,6 @@ public class AplicatieCuBursaTest {
             if (Double.compare(s1.getNote(), s2.getNote()) == 0) {
                 Assertions.assertTrue(s1.getCuantumBursa() >= s2.getCuantumBursa());
             }
-
         }
     }
 }
