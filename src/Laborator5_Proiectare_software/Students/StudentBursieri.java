@@ -1,6 +1,6 @@
 package Laborator5_Proiectare_software.Students;
 
-import ro.ulbs.proiectare.lab7.Student;
+import Laborator1_Proiectare_software.Student;
 
 import java.io.IOException;
 import java.nio.file.Files;

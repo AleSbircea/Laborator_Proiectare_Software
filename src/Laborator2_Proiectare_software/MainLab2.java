@@ -1,5 +1,7 @@
 package Laborator2_Proiectare_software;
-import ro.ulbs.proiectare.lab7.Student;
+
+import Laborator1_Proiectare_software.Student;
+
 import java.util.*;
 
 public class MainLab2 {
@@ -62,7 +64,7 @@ public class MainLab2 {
 
         //exercitiul 2.5.2
         List<Student> students=new ArrayList();
-        students.add(new  Student(102, "Ana","Ionescu", "TI22/1"));
+        students.add(new Student(102, "Ana","Ionescu", "TI22/1"));
         students.add(new Student(120, "Alis", "Popa", "TI21/2"));
         students.add(new Student(112, "Maria", "Popa", "TI21/1"));
         for(Student student:students){

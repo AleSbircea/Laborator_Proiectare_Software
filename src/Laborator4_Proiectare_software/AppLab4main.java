@@ -1,6 +1,6 @@
 package Laborator4_Proiectare_software;
-import ro.ulbs.proiectare.lab7.Student;
 
+import Laborator1_Proiectare_software.Student;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -9,7 +9,7 @@ import java.util.*;
 import java.util.HashMap;
 import java.util.Map;
 
-import static ro.ulbs.proiectare.lab7.Student.gasesteNota;
+import static Laborator1_Proiectare_software.Student.gasesteNota;
 
 
 public class AppLab4main {
@@ -85,7 +85,7 @@ public class AppLab4main {
         }
         System.out.println(students);
     }
-        public static void citireNoteStudenti (String fileName, HashMap < String, Student > students) throws IOException
+        public static void citireNoteStudenti (String fileName, HashMap < String, Student> students) throws IOException
         {
             System.out.println("Using Files.readAllLines:");
             Path path = Paths.get(fileName);

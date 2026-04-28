@@ -1,21 +1,19 @@
 package ro.ulbs.proiectare.lab7;
+import java.util.*;
 
-import java.util.HashMap;
-import java.util.Objects;
-
-public final class Student {
+public final class StudentImutabil {
     private final int numarMatricol;
     private final String prenume;
     private final String nume;
     private final String formatieDeStudiu;
     private final double note;
 
-    public Student(int numarMatricol, String prenume, String nume, String formatieStudiu) {
+    public StudentImutabil(int numarMatricol, String prenume, String nume, String formatieStudiu, double note) {
         this.numarMatricol = numarMatricol;
         this.prenume = prenume;
         this.nume = nume;
         this.formatieDeStudiu = formatieStudiu;
-        this.note = 1;
+        this.note = note;
     }
 
     @Override
@@ -27,7 +25,7 @@ public final class Student {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Student student = (Student) o;
+        StudentImutabil student = (StudentImutabil) o;
         return Objects.equals(numarMatricol, student.numarMatricol) &&
                 Objects.equals(nume, student.nume) &&
                 Objects.equals(prenume, student.prenume) &&
@@ -37,7 +35,7 @@ public final class Student {
 
     @Override
     public int hashCode() {
-        return Objects.hash(numarMatricol, nume, prenume, formatieDeStudiu,note);
+        return Objects.hash(numarMatricol, nume, prenume, formatieDeStudiu, note);
     }
 
 
@@ -59,6 +57,27 @@ public final class Student {
 
     public double getNote() {
         return note;
+    }
+    static StudentImutabil schimbaFormatia(StudentImutabil student, String nouaFormatieDeStudiu) {
+        return new StudentImutabil(
+                student.getNumarMatricol(),
+                student.getPrenume(),
+                student.getNume(),
+                nouaFormatieDeStudiu,
+                student.getNote()
+        );
+    }
+    static Set<StudentImutabil> imparteInDouaFormatii(Set <StudentImutabil> studenti, String formatia1, String formatia2) {
+        Set<StudentImutabil> studentiNoi = new HashSet<>();
+        List<StudentImutabil> listaStudenti = new ArrayList<>(studenti);
+        int mijloculListei = (listaStudenti.size() + 1) / 2;
+
+        for (int i = 0; i < listaStudenti.size(); i++) {
+            StudentImutabil studentiVechi = listaStudenti.get(i);
+            String grupaAleasa = (i < mijloculListei) ? formatia1 : formatia2;
+            studentiNoi.add(schimbaFormatia(studentiVechi, grupaAleasa));
+        }
+        return studentiNoi;
     }
 
 }
