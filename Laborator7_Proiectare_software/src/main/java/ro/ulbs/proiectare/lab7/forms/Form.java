@@ -22,6 +22,7 @@ public class Form {
         return "This form has the color " + color;
     }
 
+    //7.6.1
     public static int getInstanceCount() {
         return counter;
     }
