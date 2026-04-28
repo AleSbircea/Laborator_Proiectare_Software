@@ -1,5 +1,5 @@
 package Laborator4_Proiectare_software;
-import Laborator1_Proiectare_software.Student;
+import ro.ulbs.proiectare.lab7.Student;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -9,7 +9,7 @@ import java.util.*;
 import java.util.HashMap;
 import java.util.Map;
 
-import static Laborator1_Proiectare_software.Student.gasesteNota;
+import static ro.ulbs.proiectare.lab7.Student.gasesteNota;
 
 
 public class AppLab4main {

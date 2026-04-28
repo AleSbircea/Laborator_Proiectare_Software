@@ -1,14 +1,14 @@
+package ro.ulbs.proiectare.lab7;
 
-package Laborator1_Proiectare_software;
 import java.util.HashMap;
 import java.util.Objects;
 
-public class Student {
-    protected int numarMatricol;
-    protected String prenume;
-    protected String nume;
-    protected String formatieDeStudiu;
-    protected double note;
+public final class Student {
+    private final int numarMatricol;
+    private final String prenume;
+    private final String nume;
+    private final String formatieDeStudiu;
+    private final double note;
 
     public Student(int numarMatricol, String prenume, String nume, String formatieStudiu) {
         this.numarMatricol = numarMatricol;
@@ -23,14 +23,6 @@ public class Student {
         return "Student: " + numarMatricol + ", " + prenume + ", " + nume + ", " + formatieDeStudiu + "," + note +";";
     }
 
-    public boolean sameStudent(Student student) {
-        if (this.numarMatricol == student.numarMatricol && this.prenume.equals(student.prenume) && this.nume.equals(student.nume) && this.formatieDeStudiu.equals(student.formatieDeStudiu)) {
-            return true;
-        }
-        return false;
-    }
-
-    //adaugare lab2
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -48,7 +40,7 @@ public class Student {
         return Objects.hash(numarMatricol, nume, prenume, formatieDeStudiu,note);
     }
 
-    //adaugare lab3
+
     public String getNume() {
         return nume;
     }
@@ -65,31 +57,9 @@ public class Student {
         return formatieDeStudiu;
     }
 
-    //aduagare lab4 tot ce tine de note
-    public double setNote(double note) {
-        this.note = note;
-
-        return note;
-    }
     public double getNote() {
         return note;
     }
 
-    //tema_lab4
-
-    public static double gasesteNota(String prenume, String nume, HashMap<String, Student> tineri) {
-        HashMap<String, Student> cautareDupaNota = new HashMap<>();
-        for(Student s : tineri.values()){
-            String key = s.getPrenume() + "-" + s.getNume();
-            cautareDupaNota.put(key, s);
-        }
-        String cheieCautata = prenume + "-" + nume;
-        Student gasit = cautareDupaNota.get(cheieCautata);
-        if (gasit != null) {
-            return  gasit.setNote(gasit.getNote());
-
-        }
-        return 0.0;
-    }
 }
 

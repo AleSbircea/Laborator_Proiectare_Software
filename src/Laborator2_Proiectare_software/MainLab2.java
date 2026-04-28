@@ -1,5 +1,5 @@
 package Laborator2_Proiectare_software;
-import Laborator1_Proiectare_software.Student;
+import ro.ulbs.proiectare.lab7.Student;
 import java.util.*;
 
 public class MainLab2 {
