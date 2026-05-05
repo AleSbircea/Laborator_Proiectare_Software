@@ -85,12 +85,52 @@ public class ReadExcelMain {
             }
         }
     }
+    //problema 8.5.3
+    public static void readExcel3(String filePath) {
+        XSSFWorkbook workbookNew = new XSSFWorkbook();
+        XSSFSheet sheetNew = workbookNew.createSheet("Average - formula");
+        try (FileInputStream fis = new FileInputStream(filePath);
+             Workbook workbookOld = new XSSFWorkbook(fis)) {
+            Sheet sheet = workbookOld.getSheetAt(0);
+
+            for (Row oldRow : sheet) {
+                Row newRow = sheetNew.createRow(oldRow.getRowNum());
+
+                for (Cell oldCell : oldRow) {
+                    Cell newCell = newRow.createCell(oldCell.getColumnIndex());
+                    switch (oldCell.getCellType()) {
+                        case STRING -> newCell.setCellValue(oldCell.getStringCellValue());
+                        case NUMERIC -> newCell.setCellValue(oldCell.getNumericCellValue());
+                        default -> {
+                        }
+
+                    }
+                }
+                int excelRowNum = oldRow.getRowNum() + 1;
+                newRow.createCell(6).setCellFormula("AVERAGE(D" + excelRowNum + ":F" + excelRowNum + ")");
+            }
+            try (FileOutputStream fos = new FileOutputStream("laborator8_output3.xlsx")) {
+                workbookNew.write(fos);
+                System.out.println("Al doilea fisier excel a fost creat cu succes!");
+
+            }
+        }catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                workbookNew.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
 
                 //main
                 public static void main (String[]args){
                     readExcel("laborator8_input.xlsx");
                     readExcel2("laborator8_input.xlsx");
+                    readExcel3("laborator8_input.xlsx");
                 }
 
 }
