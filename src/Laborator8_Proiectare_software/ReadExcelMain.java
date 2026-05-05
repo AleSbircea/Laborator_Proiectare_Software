@@ -1,11 +1,11 @@
 package Laborator8_Proiectare_software;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class ReadExcelMain {
@@ -31,7 +31,66 @@ public class ReadExcelMain {
         }
     }
 
-    public static void main(String[] args) {
-        readExcel("laborator8_input.xlsx");
+
+    //problema 8.5.2
+    public static void readExcel2(String filePath) {
+        XSSFWorkbook workbookNew = new XSSFWorkbook();
+        XSSFSheet sheetNew = workbookNew.createSheet("Average");
+        try (FileInputStream fis = new FileInputStream(filePath);
+             Workbook workbookOld = new XSSFWorkbook(fis)) {
+            Sheet sheet = workbookOld.getSheetAt(0);
+
+            for (Row oldRow : sheet) {
+                Row newRow = sheetNew.createRow(oldRow.getRowNum());
+
+                for (Cell oldCell : oldRow) {
+                    Cell newCell = newRow.createCell(oldCell.getColumnIndex());
+                    switch (oldCell.getCellType()) {
+                        case STRING -> newCell.setCellValue(oldCell.getStringCellValue());
+                        case NUMERIC -> newCell.setCellValue(oldCell.getNumericCellValue());
+                        default -> {
+                        }
+
+                    }
+                }
+                if (oldRow.getRowNum() > 0) {
+                    double sum = 0;
+                    int count = 0;
+                    for (int i = 3; i <= 5; i++) {
+                        Cell c = newRow.getCell(i);
+                        if (c != null && c.getCellType() == CellType.NUMERIC) {
+                            sum += c.getNumericCellValue();
+                            count++;
+                        }
+                    }
+
+                    if (count > 0) {
+                        double average = sum / count;
+                        newRow.createCell(6).setCellValue(average);
+                    }
+                }
+            }
+            try (FileOutputStream fos = new FileOutputStream("laborator8_output2.xlsx")) {
+                workbookNew.write(fos);
+                System.out.println("Fișierul excel a fost creat cu succes!");
+
+            }
+        }catch (IOException e) {
+                        e.printStackTrace();
+        } finally {
+            try {
+                workbookNew.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
+
+
+                //main
+                public static void main (String[]args){
+                    readExcel("laborator8_input.xlsx");
+                    readExcel2("laborator8_input.xlsx");
+                }
+
 }
