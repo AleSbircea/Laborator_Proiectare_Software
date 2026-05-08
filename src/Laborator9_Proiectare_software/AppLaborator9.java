@@ -51,6 +51,25 @@ public class AppLaborator9 {
         boolean nrDoisprezece = numbers.stream()
                 .anyMatch(n -> n == 12);
         System.out.println("Nr doisprezece se afla in lista generata? => " +nrDoisprezece);
+        System.out.println();
+        //problema 9.3.2
+        //textul: "Acesta este un program scris in java pentru expresii lambda"
+
+        String text = "Acesta este un program scris in java pentru expresii lambda";
+        List<String> wordList = List.of(text.split(" "));
+        List<String> fiveLettersList = wordList.stream()
+                .filter(w->w.length()>=5)
+                .collect(Collectors.toList());
+        System.out.println("Cuvintele cu 5 sau mai multe litere: " + fiveLettersList );
+        System.out.println("Nr de cuvinte cu 5 sau mai multe litere: " + fiveLettersList.size());
+
+        List<String> sortedWords = fiveLettersList.stream().sorted().collect(Collectors.toList());
+        System.out.println("Lista de cuvinte sortate: " +  sortedWords);
+
+        Optional<String> item = wordList.stream().filter(p-> p.contains("p")).findAny();
+        if (item.isPresent()) {
+            System.out.println("Am gasit elementul: "+item.get());
+        }
 
     }
 }
