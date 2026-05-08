@@ -16,7 +16,7 @@ import java.util.Set;
 
 public class ExcelStudent {
     //metoda care exporta lista/setul din laboratorul 7 si o scrie intr-un excel
-    public static void exportToExcel(Set<StudentImutabil> studenti, String filePath) {
+    public void exportToExcel(Set<StudentImutabil> studenti, String filePath) {
         XSSFWorkbook workbook = new XSSFWorkbook();
         Sheet sheet = workbook.createSheet("Lista_studenti");
         int rowNum = 0;
@@ -43,8 +43,9 @@ public class ExcelStudent {
             }
         }
     }
+
         //metoda care citeste din fisier si afiseaza un set/lista
-        public static Set<StudentImutabil> readExcelStudent(String filePath) {
+        public  Set<StudentImutabil> readExcelStudent(String filePath) {
             Set<StudentImutabil> studenti = new LinkedHashSet<>();
 
             try (FileInputStream fis = new FileInputStream(filePath);
@@ -78,11 +79,13 @@ public class ExcelStudent {
         studenti.add(new StudentImutabil(131, "Andrei", "Bogdan", "TI22/1",6.5));
         studenti.add(new StudentImutabil(114, "Ema", "Dumitrean", "TI22/2", 8.3));
         studenti.add(new StudentImutabil(127, "Vlad", "Popa", "TI22/2", 7.8));
-        exportToExcel(studenti, "laborator8_students.xlsx");
+        ExcelStudent e= new ExcelStudent();
+        //e.exportToExcel(studenti, "laborator8_students.xlsx");
 
         //b
         System.out.println("\nSet studenti cititi din Excel:");
-        Set<StudentImutabil> studentiCititi = readExcelStudent("laborator8_students.xlsx");
+
+        Set<StudentImutabil> studentiCititi = e.readExcelStudent("laborator8_students.xlsx");
         for (StudentImutabil s : studentiCititi) {
             System.out.println(s);
         }
