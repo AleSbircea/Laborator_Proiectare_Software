@@ -17,6 +17,15 @@ public class Student {
         this.formatieDeStudiu = formatieStudiu;
         this.note = 1;
     }
+    //constructorul acesta este adaugat pentru laboratorul 9
+    public Student(int numarMatricol, String prenume, String nume, String formatieStudiu,  double note) {
+        this.numarMatricol = numarMatricol;
+        this.prenume = prenume;
+        this.nume = nume;
+        this.formatieDeStudiu = formatieStudiu;
+        this.note = note;
+    }
+
 
     @Override
     public String toString() {
