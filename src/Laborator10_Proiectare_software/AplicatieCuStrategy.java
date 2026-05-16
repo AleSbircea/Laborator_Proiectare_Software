@@ -11,12 +11,12 @@ public class AplicatieCuStrategy {
                 new Student(1025,"Andrei","Popa","ISM141/2", 8.70),
                 new Student(1024,"Ioan","Mihalcea","ISM141/1", 10),
                 new Student(1026,"Anamaria","Prodan","TI131/1", 8.90),
-                new Student(1029,"Bianca","Popescu","TI131/1,", 10),
-                new Student(1029,"Maria","Pana","TI131/2,", 4.10),
-                new Student(1029,"Gabriela","Mohanu","TI131/2,", 7.33),
-                new Student(1029,"Marius","Nasta","TI131/2,", 3.20),
-                new Student(1029,"Marius","Nasta","TI131/1,", 5.12),
-                new Student(1029,"Andrei","Dobrescu","TI131/2,", 2.22)
+                new Student(1029,"Bianca","Popescu","TI131/1", 10),
+                new Student(1029,"Maria","Pana","TI131/2", 4.10),
+                new Student(1029,"Gabriela","Mohanu","TI131/2", 7.33),
+                new Student(1029,"Marius","Nasta","TI131/2", 3.20),
+                new Student(1029,"Marius","Nasta","TI131/1", 5.12),
+                new Student(1029,"Andrei","Dobrescu","TI131/2", 2.22)
         );
         //afisare in consola
         IStudentiExport strategyConsole = new StudentiInConsola();
@@ -32,5 +32,28 @@ public class AplicatieCuStrategy {
         String fileName2 = "studentiStrategyExcel.xlsx";
         StudentiInFisierXlsx strategyFisierExcel = new StudentiInFisierXlsx(fileName2);
         exporter.startExport(strategyFisierExcel, studenti);
+
+        System.out.println();
+
+        //import in txt
+        String fileNameText = "studentiStrategyText.txt";
+        StudentiDinFisierText importatorText = new StudentiDinFisierText(fileNameText);
+        Importer contextImporter = new Importer();
+        List<Student> studentiDinText = contextImporter.startImport(importatorText);
+        System.out.println("Import fisier txt:");
+        for (Student s : studentiDinText) {
+            System.out.println(s);
+        }
+
+        System.out.println();
+
+        //import in excel
+        String fileNameExcel = "studentiStrategyExcel.xlsx";
+        IStudentiImport importatorExcel = new StudentiDinFisierXlsx(fileNameExcel);
+        List<Student> studentiDinExcel = importatorExcel.doImport();
+        System.out.println("Import fisier xlsx:");
+        for (Student s : studentiDinExcel) {
+            System.out.println(s);
+        }
     }
 }

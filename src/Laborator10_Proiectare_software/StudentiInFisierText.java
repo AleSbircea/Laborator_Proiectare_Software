@@ -22,7 +22,12 @@ public class StudentiInFisierText implements IStudentiExport {
             Path path = Paths.get(fileName);
             List<String> linesToWrite = new ArrayList<>();
             for (Student s : studenti) {
-                linesToWrite.add(s.toString());
+                String line = s.getNumarMatricol() + "," +
+                        s.getPrenume() + "," +
+                        s.getNume() + "," +
+                        s.getFormatieDeStudiu() + "," +
+                        s.getNote();
+                linesToWrite.add(line);
             }
             Files.write(path, linesToWrite);
             System.out.println("Exportul in txt a fost realizat!");
@@ -30,6 +35,5 @@ public class StudentiInFisierText implements IStudentiExport {
             System.err.println();
             e.printStackTrace();
         }
-        }
     }
-
+}
